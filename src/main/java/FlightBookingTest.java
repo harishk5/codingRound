@@ -1,28 +1,20 @@
-import com.sun.javafx.PlatformUtil;
-
-import TestBase.testBase;
+import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.List;
+import TestBase.testBase;
 
 public class FlightBookingTest extends testBase {
 
-    
-//
     @Test
     public void testThatResultsAppearForAOneWayJourney() {
 
         
-        driver.get("https://www.cleartrip.com/");
-        waitFor(2000);
+        driver.get(prop.getProperty("url"));
+        //waitFor(2000);
         driver.findElement(By.id("OneWay")).click();
 
         driver.findElement(By.id("FromTag")).clear();
@@ -68,14 +60,7 @@ public class FlightBookingTest extends testBase {
     }
 
 
-    private boolean isElementPresent(By by) {
-        try {
-            driver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
+    
 
     
 }
