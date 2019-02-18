@@ -20,7 +20,7 @@ public class FlightBookingTest extends testBase {
     @Test
     public void testThatResultsAppearForAOneWayJourney() {
 
-        setDriverPath();
+        
         driver.get("https://www.cleartrip.com/");
         waitFor(2000);
         driver.findElement(By.id("OneWay")).click();
