@@ -1,4 +1,7 @@
 import com.sun.javafx.PlatformUtil;
+
+import TestBase.testBase;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -10,10 +13,9 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class FlightBookingTest {
+public class FlightBookingTest extends testBase {
 
-    WebDriver driver = new ChromeDriver();
-
+    
 
     @Test
     public void testThatResultsAppearForAOneWayJourney() {
@@ -75,15 +77,5 @@ public class FlightBookingTest {
         }
     }
 
-    private void setDriverPath() {
-        if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-        }
-        if (PlatformUtil.isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        }
-        if (PlatformUtil.isLinux()) {
-            System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-        }
-    }
+    
 }
