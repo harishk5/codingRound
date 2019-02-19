@@ -10,20 +10,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import com.sun.javafx.PlatformUtil;
 
+import Pages.FlightBookingPage;
 import Utilities.testUtil;
 
 @SuppressWarnings("restriction")
 public class testBase {
 	public static WebDriver driver;
 	public static Properties prop;
+	public FlightBookingPage FBPage;
 	
 	public testBase(){
 		try {
 			prop = new Properties();
-			FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+ "/codingRound/src/main/java"
+			FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+ "/src/main/java"
 					+ "/Config/config.properties");
 			prop.load(ip);
 		} catch (FileNotFoundException e) {
@@ -34,17 +37,21 @@ public class testBase {
 	}
 
 	public void setDriverPath() {
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--disable-notifications");
+		
+		
 		if (PlatformUtil.isMac()) {
 			System.setProperty("webdriver.chrome.driver", "chromedriver");
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(options);
 		}
 		if (PlatformUtil.isWindows()) {
 			System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(options);
 		}
 		if (PlatformUtil.isLinux()) {
 			System.setProperty("webdriver.chrome.driver", "chromedriver_linux");
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(options);
 		}
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();

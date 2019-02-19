@@ -10,7 +10,7 @@ public class HotelBookingTest extends testBase {
 
     @Test
     public void shouldBeAbleToSearchForHotels() {
-        setDriverPath();
+    	setDriverPath();
 
         driver.get(prop.getProperty("url"));
         HBPage.hotelLink.click();
