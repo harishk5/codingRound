@@ -1,4 +1,5 @@
-import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import Pages.HotelBookingPage;
@@ -6,24 +7,34 @@ import TestBase.testBase;
 
 public class HotelBookingTest extends testBase {
 
-    HotelBookingPage HBPage = new HotelBookingPage();
+	@BeforeMethod
+	public void setup() {
 
-    @Test
-    public void shouldBeAbleToSearchForHotels() {
-    	setDriverPath();
+		setDriverPath();
+		HBPage = new HotelBookingPage();
 
-        driver.get(prop.getProperty("url"));
-        HBPage.hotelLink.click();
+		driver.get(prop.getProperty("url"));
 
-        HBPage.localityTextBox.sendKeys("Indiranagar, Bangalore");
+	}
 
-        new Select(HBPage.travellerSelection).selectByVisibleText("1 room, 2 adults");
-        HBPage.searchButton.click();
+	@Test
+	public void shouldBeAbleToSearchForHotels() {
 
-        driver.quit();
+		HBPage.clickHotelLink();
+		HBPage.typeLocality("Indiranagar, Bangalore");
+		HBPage.selectLocality();
+		
+		HBPage.selectCheckinDate();
+		HBPage.selectCheckOutDate();
+		
+		HBPage.selectTravellerDetail("1 room, 2 adults");
+		HBPage.clickSearch();
 
-    }
+	}
 
-    
+	@AfterMethod
+	public void tearDown() {
+		driver.quit();
+	}
 
 }

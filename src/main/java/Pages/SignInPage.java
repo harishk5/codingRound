@@ -9,21 +9,38 @@ import TestBase.testBase;
 public class SignInPage extends testBase {
 
 	@FindBy(linkText="Your trips")
-	private WebElement yourTripsMenu;
+	public WebElement yourTripsMenu;
 
 	@FindBy(id="SignIn")
-	private WebElement signInMenu;
+	public WebElement signInMenu;
 
 	@FindBy(id="signInButton")
-	private WebElement signInButton;
+	public WebElement signInButton;
 
 	@FindBy(id="errors1")
-	private WebElement errorTxt;
+	public WebElement errorTxt;
 	
 	
 	// Initializing the Page Objects:
 	public SignInPage() {
 		PageFactory.initElements(driver, this);
+	}
+	
+	public void clickYourTripsMenu() {
+		yourTripsMenu.click();
+	}
+	
+	public void clickSignInMenu() {
+		signInMenu.click();
+	}
+	
+	public void clickSignInBtn() {
+		signInButton.click();
+	}
+	
+	public String checkForError() {
+		String error = errorTxt.getText();
+		return error;
 	}
 	
 }

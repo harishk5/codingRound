@@ -15,6 +15,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import com.sun.javafx.PlatformUtil;
 
 import Pages.FlightBookingPage;
+import Pages.HotelBookingPage;
+import Pages.SignInPage;
 import Utilities.testUtil;
 
 @SuppressWarnings("restriction")
@@ -22,6 +24,9 @@ public class testBase {
 	public static WebDriver driver;
 	public static Properties prop;
 	public FlightBookingPage FBPage;
+	public HotelBookingPage HBPage;
+	public SignInPage SIPage;
+	
 	
 	public testBase(){
 		try {

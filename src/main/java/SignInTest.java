@@ -1,36 +1,35 @@
-import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import Pages.SignInPage;
 import TestBase.testBase;
 
 public class SignInTest extends testBase {
 
-    @Test
-    public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
+	@BeforeMethod
+	public void setup() {
 
-        setDriverPath();
+		setDriverPath();
+		SIPage = new SignInPage();
 
-        driver.get(prop.getProperty("url"));
-        waitFor(2000);
+		driver.get(prop.getProperty("url"));
 
-        driver.findElement(By.linkText("Your trips")).click();
-        driver.findElement(By.id("SignIn")).click();
+	}
 
-        driver.findElement(By.id("signInButton")).click();
+	@Test
+	public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
 
-        String errors1 = driver.findElement(By.id("errors1")).getText();
-        Assert.assertTrue(errors1.contains("There were errors in your submission"));
-        driver.quit();
-    }
+		SIPage.clickYourTripsMenu();
+		SIPage.clickSignInMenu();
+		SIPage.clickSignInBtn();
+		Assert.assertTrue(SIPage.checkForError().contains("There were errors in your submission"));
+	}
 
-    private void waitFor(int durationInMilliSeconds) {
-        try {
-            Thread.sleep(durationInMilliSeconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-    }
-
+	@AfterMethod
+	public void tearDown() {
+		driver.quit();
+	}
 
 }
