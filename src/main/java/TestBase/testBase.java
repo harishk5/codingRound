@@ -11,6 +11,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.sun.javafx.PlatformUtil;
 
@@ -23,6 +24,7 @@ import Utilities.testUtil;
 public class testBase {
 	public static WebDriver driver;
 	public static Properties prop;
+	public WebDriverWait wait;
 	public FlightBookingPage FBPage;
 	public HotelBookingPage HBPage;
 	public SignInPage SIPage;

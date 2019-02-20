@@ -11,15 +11,17 @@ public class SignInTest extends testBase {
 	@BeforeMethod
 	public void setup() {
 
+		//setting the driver
 		setDriverPath();
 		SIPage = new SignInPage();
 
+		//launching the application
 		driver.get(prop.getProperty("url"));
 
 	}
 
 	@Test
-	public void shouldThrowAnErrorIfSignInDetailsAreMissing() {
+	public void invalidSignIn() {
 
 		SIPage.clickYourTripsMenu();
 		SIPage.clickSignInMenu();

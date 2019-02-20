@@ -12,10 +12,11 @@ public class FlightBookingTest extends testBase {
 	@BeforeMethod
 	public void setup() {
 
-		
+		//setting the driver
 		setDriverPath();
 		FBPage = new FlightBookingPage();
 		
+		//launching the application
 		driver.get(prop.getProperty("url"));
 
 	}

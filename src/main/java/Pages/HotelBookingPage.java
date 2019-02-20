@@ -3,7 +3,9 @@ package Pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import TestBase.testBase;
 
@@ -16,14 +18,14 @@ public class HotelBookingPage extends testBase {
 	@FindBy(id = "Tags")
 	public WebElement localityTextBox;
 
-@FindBy(id="ui-id-1")
-public WebElement locality;
+	@FindBy(id = "ui-id-1")
+	public WebElement locality;
 
-@FindBy(xpath="//a[contains(text(),'18')]")
-public WebElement checkInDate;
+	@FindBy(xpath = "//a[contains(text(),'18')]")
+	public WebElement checkInDate;
 
-@FindBy(xpath="//div[contains(@class,'monthBlock first')]//a[contains(@class,'ui-state-default')][contains(text(),'20')]")
-public WebElement checkOutDate;
+	@FindBy(xpath = "//div[contains(@class,'monthBlock first')]//a[contains(@class,'ui-state-default')][contains(text(),'20')]")
+	public WebElement checkOutDate;
 
 	@FindBy(id = "SearchHotelsButton")
 	public WebElement searchButton;
@@ -35,31 +37,35 @@ public WebElement checkOutDate;
 	public HotelBookingPage() {
 		PageFactory.initElements(driver, this);
 	}
-	
+
 	public void clickHotelLink() {
 		hotelLink.click();
 	}
-	
+
 	public void typeLocality(String locality) {
 		localityTextBox.sendKeys(locality);
 	}
-	
+
 	public void selectLocality() {
 		locality.click();
 	}
-	
+
 	public void selectCheckinDate() {
+		wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(checkInDate));
 		checkInDate.click();
 	}
-	
+
 	public void selectCheckOutDate() {
+		wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(checkOutDate));
 		checkOutDate.click();
 	}
-	
+
 	public void selectTravellerDetail(String TravellerDetail) {
 		new Select(travellerSelection).selectByVisibleText(TravellerDetail);
 	}
-	
+
 	public void clickSearch() {
 		searchButton.click();
 	}

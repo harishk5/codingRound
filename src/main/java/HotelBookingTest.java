@@ -10,9 +10,11 @@ public class HotelBookingTest extends testBase {
 	@BeforeMethod
 	public void setup() {
 
+		//setting the driver
 		setDriverPath();
 		HBPage = new HotelBookingPage();
 
+		//launching the application
 		driver.get(prop.getProperty("url"));
 
 	}
