@@ -20,7 +20,7 @@ public class HotelBookingTest extends testBase {
 	}
 
 	@Test
-	public void shouldBeAbleToSearchForHotels() {
+	public void hotelSearchBookingTest() {
 
 		HBPage.clickHotelLink();
 		HBPage.typeLocality("Indiranagar, Bangalore");

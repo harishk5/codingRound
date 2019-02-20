@@ -22,7 +22,7 @@ public class FlightBookingTest extends testBase {
 	}
 
 	@Test
-	public void testThatResultsAppearForAOneWayJourney() {
+	public void flighBookingTest() {
 
 		FBPage.clickOneWayBtn();
 		FBPage.typeOriginCity("Bangalore");

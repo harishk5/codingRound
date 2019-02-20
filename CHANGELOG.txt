@@ -1,0 +1,17 @@
+CHANGELOG:
+==========
+
+ * Created three separate page classes for Flighbooking, Hotelbooking & SignIn
+ * Created a testBase class which has all the initialization and above three classes extends this base class
+ * Created a property file to store data that are required before script run
+ * Created a testUtil class to store data that are required during script run
+ * setDriverPath is moved to testBase class
+ * setDriverPath now includes code to disable notifications of web browser using ChromeOptions
+ * setDriverPath now also includes code to handle maximizing browser, deleting all cookies prior launching the browser, defining pageloadtimeout and implicit wait
+ * isElementPreset method moved to testBase class
+ * locators which uses index value are replaced with strong locators
+ * All the locators and actions on are moved to their respective page classes
+ * waitFor which uses Thread.sleep is totally removed and used implicit and explicit waits
+ * signIn test case involves clicking on SignIn button in a popup which is actually inside a iframe. Switching to this iframe and performing actions are handled in the new code.
+ * @BeforeMethod & @AfterMethod annotations are introduced in test classes.
+ * Renamed all those lengthy test class names to crisp and appropriate ones.
